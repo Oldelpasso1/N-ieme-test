@@ -1,0 +1,171 @@
+<!--
+POTOSHIN-INSPIRED SINGLE-FILE SITE
+---------------------------------
+Fichier: index.html (code/html)
+But: ce fichier est conçu comme un point de départ *inspiré* par la mise en page et le fond du site potoshin.com/fr/index.html.
+Ne copie pas textuellement le contenu protégé par droit d'auteur; ce projet est une réinterprétation originale.
+
+Pour publier sur GitHub Pages :
+1. Crée un nouveau repo sur GitHub (par ex. `potoshin-inspired`).
+2. Dans le repo, clique sur Add file → Create new file, nomme `index.html` et colle ce contenu. Commit.
+3. Settings → Pages → Source: main (branch) / root → Save. Ton site sera publié sur https://<username>.github.io/<repo>/
+
+-->
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Potoshin — Prototype inspiré</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset minimal */
+    :root{
+      --bg1: #0f1724; /* dark navy */
+      --bg2: #0b1a2b; /* slightly different */
+      --accent: #8bd3ff;
+      --card-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #e6eef8;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(139,211,255,0.06), transparent 8%),
+        radial-gradient(900px 500px at 90% 90%, rgba(255,255,255,0.02), transparent 10%),
+        linear-gradient(180deg,var(--bg1), var(--bg2));
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px;
+    }
+
+    /* Subtle textured overlay using CSS noise via SVG data URL */
+    body::after{
+      content:"";
+      position:fixed;inset:0;pointer-events:none;opacity:0.06;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.7"/></svg>');
+      mix-blend-mode:overlay;
+    }
+
+    /* Main card */
+    .card{
+      width:100%;
+      max-width:980px;
+      border-radius:20px;
+      padding:36px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(8px) saturate(120%);
+      -webkit-backdrop-filter: blur(8px) saturate(120%);
+      display:grid;
+      grid-template-columns: 1fr 300px;
+      gap:28px;
+      align-items:start;
+    }
+
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;}
+    }
+
+    header.site-header{
+      display:flex;gap:12px;align-items:center;margin-bottom:12px;
+    }
+    .logo{
+      width:52px;height:52px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#234466, #15324a);font-weight:700;font-family:Merriweather,serif;color:var(--accent);
+      box-shadow: 0 6px 18px rgba(11,25,40,0.6);
+    }
+    .title-wrap h1{margin:0;font-family:Merriweather,serif;font-weight:300;font-size:26px}
+    .title-wrap p{margin:0;color:rgba(230,238,248,0.75);font-size:13px}
+
+    nav.top-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:13px}
+
+    /* Left content */
+    .content h2{font-family:Merriweather,serif;margin-top:18px;margin-bottom:6px;font-weight:700}
+    .content p{line-height:1.6;color:rgba(230,238,248,0.9)}
+
+    /* Right column */
+    .right{
+      padding:18px;border-radius:12px;background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      height:fit-content;
+    }
+    .meta{font-size:13px;color:rgba(230,238,248,0.82);}
+
+    footer{margin-top:22px;font-size:13px;color:rgba(230,238,248,0.6)}
+
+    /* decorative geometric shape to echo site 'shape' */
+    .decor{
+      position:absolute;right:8%;top:6%;transform:translate(0,0);opacity:0.08;pointer-events:none;filter:blur(6px);
+    }
+
+  </style>
+</head>
+<body>
+  <svg class="decor" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#8bd3ff" stop-opacity="0.9"/><stop offset="1" stop-color="#6ab6ff" stop-opacity="0.6"/></linearGradient>
+    </defs>
+    <g transform="translate(-20,-20) rotate(-6 210 210)">
+      <path d="M50 210 C80 120 160 60 260 80 C360 100 380 220 320 310 C260 400 140 420 60 340 C-20 260 20 300 50 210Z" fill="url(#g1)" />
+    </g>
+  </svg>
+
+  <main class="card" role="main">
+    <section class="left">
+      <header class="site-header">
+        <div class="logo">P</div>
+        <div class="title-wrap">
+          <h1>Prototype — page d'accueil</h1>
+          <p>Une mise en page inspirée, fond diffus et carte centrale.</p>
+          <nav class="top-nav" aria-label="navigation rapide">
+            <div class="chip">Accueil</div>
+            <div class="chip">Articles</div>
+            <div class="chip">Projets</div>
+            <div class="chip">Contacts</div>
+          </nav>
+        </div>
+      </header>
+
+      <article class="content">
+        <h2>Bonjour — prototype</h2>
+        <p>Ce modèle met en œuvre :
+          <ul>
+            <li>Un fond dégradé sombre enrichi d'une texture subtile (effet "papier").</li>
+            <li>Une « carte » centrale en verre dépoli (backdrop-filter) avec coins arrondis.</li>
+            <li>Un élément décoratif vectoriel en arrière-plan qui donne la forme organique.</li>
+          </ul>
+        </p>
+
+        <p>Tu peux modifier le texte, les couleurs et la forme SVG pour coller encore plus au rendu que tu veux.
+        </p>
+
+        <footer>
+          <p>Besoin que je crée le repo GitHub (structure + README + workflow) prêt à publier sur Pages ? Dis-moi le nom du repo et si tu veux un build (ex: site statique vs React).</p>
+        </footer>
+      </article>
+    </section>
+
+    <aside class="right" aria-label="panneau latéral">
+      <div class="meta">
+        <strong>Prototype</strong>
+        <p>Largeur max: 980px · Bord arrondi: 20px · Flou verre : 8px</p>
+        <hr style="opacity:0.06;border:none;height:1px;margin:12px 0;background:linear-gradient(90deg,transparent,#ffffff22,transparent)">
+        <p>Police de titre: Merriweather (serif). Corps de texte: Inter.</p>
+        <p style="margin-top:10px">Exporter : coller `index.html` dans un dépôt GitHub et activer Pages.</p>
+      </div>
+    </aside>
+
+  </main>
+</body>
+</html>
